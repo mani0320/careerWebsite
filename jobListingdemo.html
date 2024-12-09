@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Board | Esports Career Hub</title>
+    <link rel="stylesheet" href="jobListingdemo.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Esports Career Hub</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+				<li><a href="history.html">History</a></li>
+                <li><a href="jobListingdemo.html">Job Board</a></li>
+                <li><a href="training.html">Training Resources</a></li>
+                <li><a href="joinCommunity.html">Community Forum</a></li>
+            </ul>
+        </nav>
+    </header>
+	<section class="title">
+        <h1>Explore Exciting Career Opportunities in Esports</h1>
+		<h2>Your Gateway to Passion-Fueled Jobs in Gaming and Competitive Sports</h2>
+        <p>Find your dream job in the esports industry. Whether you're a coach, content creator, or manager, our platform connects you with top-tier opportunities worldwide.</p>
+</section>
+
+
+    <section>
+        <h3>Filter Jobs</h3>
+		<br>
+        <form id="jobFilters">
+            <label for="role">Role:</label>
+            <select id="role">
+                <option value="all">All</option>
+                <option value="coaching">Coaching</option>
+                <option value="management">Management</option>
+                <option value="media">Media</option>
+            </select>
+
+            <label for="location">Location:</label>
+            <select id="location">
+                <option value="all">All</option>
+                <option value="remote">Remote</option>
+                <option value="hybrid">Hybrid</option>
+                <option value="in-person">In-Person</option>
+            </select>
+
+            <label for="experience">Experience Level:</label>
+            <select id="experience">
+                <option value="all">All</option>
+                <option value="entry">Entry Level</option>
+                <option value="mid">Mid Level</option>
+                <option value="senior">Senior Level</option>
+            </select>
+
+            <button type="button" onclick="filterJobs()">Apply Filters</button>
+        </form>
+    </section>
+
+
+    <section id="jobListings" class="job-listings">
+    <h3>Available Jobs:</h3>
+	
+    <div class="job-listing" data-role="coaching" data-location="remote" data-experience="entry">
+        <h4>League of Legends Coach</h4>
+        <p>Company: Legends United</p>
+        <p>Location: Remote</p>
+        <p>Requirements: 2+ years coaching experience, strong leadership skills.</p>
+        <a href="application-form1.html" class="apply-link">Apply</a>
+    </div>
+
+    <div class="job-listing" data-role="media" data-location="hybrid" data-experience="mid">
+        <h4>Esports Content Creator</h4>
+        <p>Company: GameMedia Inc.</p>
+        <p>Location: Hybrid (New York)</p>
+        <p>Requirements: Portfolio of video/graphics work, social media experience.</p>
+        <a href="application-form1.html" class="apply-link">Apply</a>
+    </div>
+
+    <div class="job-listing" data-role="management" data-location="in-person" data-experience="senior">
+        <h4>Overwatch Team Manager</h4>
+        <p>Company: LA Overwatchers</p>
+        <p>Location: Los Angeles</p>
+        <p>Requirements: 5+ years in esports management, excellent organizational skills.</p>
+        <a href="application-form1.html" class="apply-link">Apply</a>
+    </div>
+
+    <div class="job-listing" data-role="media" data-location="hybrid" data-experience="entry">
+        <h4>Esports Marketing Specialist</h4>
+        <p>Company: Chicago Esports Hub</p>
+        <p>Location: Hybrid (Chicago)</p>
+        <p>Requirements: Marketing degree, creative mindset, strong communication skills.</p>
+        <a href="application-form1.html" class="apply-link">Apply</a>
+    </div>
+</section>
+
+
+    <script>
+        function filterJobs() {
+            var role = document.getElementById("role").value;
+            var location = document.getElementById("location").value;
+            var experience = document.getElementById("experience").value;
+
+            var jobs = document.querySelectorAll(".job-listing");
+
+
+            jobs.forEach(function(job) {
+                var jobRole = job.getAttribute("data-role");
+                var jobLocation = job.getAttribute("data-location");
+                var jobExperience = job.getAttribute("data-experience");
+
+                var matchesRole = (role === "all" || jobRole === role);
+                var matchesLocation = (location === "all" || jobLocation === location);
+                var matchesExperience = (experience === "all" || jobExperience === experience);
+
+                job.style.display = (matchesRole && matchesLocation && matchesExperience) ? "list-item" : "none";
+            });
+        }
+    </script>
+</body>
+</html>
